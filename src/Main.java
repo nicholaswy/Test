@@ -1,7 +1,9 @@
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
@@ -23,21 +25,23 @@ public class Main {
         final int COLUMN_COUNT = 91;
         
         String [][] input = new String[ROW_COUNT][COLUMN_COUNT]; 
-//read a line into 2d matrix
-//input[0][4-...] into results[]
-
+        //read a line into 2d matrix
+        //input[0][4-...] into results[]
+        
+        Scanner scanFile = null;
+        String fileName = "input.csv"; 
+            
 try{
 	//open file
-	//Path filePath = C:/
-	BufferedReader reader = Files.newBufferedReader(filePath); 
-	
+	//String file = "input.csv"
+	File records = new File(fileName);
+            scanFile = new Scanner(records); 
 	
 	//Reading the file
-	Scanner scanner = new Scanner(System.in);
 	
 	
 	for(int i = 0; i < ROW_COUNT; i++){
-		String string = reader.readLine(); 
+		String string = scanFile.nextLine(); 
                 String [] splitted = string.split(","); 
 		for(int b = 0; b < COLUMN_COUNT; b++){
 		input[i][b] = splitted[b]; 
@@ -50,10 +54,14 @@ try{
 	String [i][0] where i >1 is the date*/
 	
 	//write to file
+        
+        File output = new File("output.csv");
+        PrintWriter fout = null; 
 	try{
 	
 	//open output file
-	Path fout = ; 
+
+            fout = new PrintWriter(output);
 	//FileWriter fout = new FileWriter();
 	
 	
